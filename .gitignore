@@ -1,0 +1,39 @@
+# MacOS General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Unity unnecessary files
+Temp/
+﻿/Temp
+/Library
+
+# Individual folders of developers
+/Builds
+/unity_android
+/Profiler shots
+/Logs
+/Materials
+
+# Jetbrain Rider Cache
+.idea/
+Assets/Plugins/Editor/JetBrains*
+
+# VS unnecessary files
+/Assembly-CSharp.csproj.user
+/*.sln
+/*.csproj
+/.vs
+/.vscode/settings.json
+/.vscode/*
+/obj
+
+# Built folders
+/BuildPC
+/BuildPC32
+/BuildWebGL
+/BuildLinux
+/BuildAndroid
+/BuildMac
+/BuildIOS
+Assets/Vuplex/WebView/Plugins/Windows/VuplexWebViewChromium/log-chromium.txt~
