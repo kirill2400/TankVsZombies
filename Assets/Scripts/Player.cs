@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
         tank.SetOwner(this);
         
         _playerInput.Move += PlayerInputOnMove;
-        _playerInput.SingleFire += PlayerInputOnSingleFire;
         _playerInput.StartFire += PlayerInputOnStartFire;
         _playerInput.StopFire += PlayerInputOnStopFire;
         _playerInput.ChangeWeapon += PlayerInputOnChangeWeapon;
@@ -28,7 +27,6 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         _playerInput.Move -= PlayerInputOnMove;
-        _playerInput.SingleFire -= PlayerInputOnSingleFire;
         _playerInput.StartFire -= PlayerInputOnStartFire;
         _playerInput.StopFire -= PlayerInputOnStopFire;
         _playerInput.ChangeWeapon -= PlayerInputOnChangeWeapon;
@@ -43,20 +41,15 @@ public class Player : MonoBehaviour
     {
         tank.TankMover.SetMoveInput(move);
     }
-
-    private void PlayerInputOnSingleFire()
-    {
-        
-    }
     
     private void PlayerInputOnStartFire()
     {
-        
+        tank.WeaponContainer.StartFire();
     }
     
     private void PlayerInputOnStopFire()
     {
-        
+        tank.WeaponContainer.StopFire();
     }
     
     private void PlayerInputOnChangeWeapon(bool obj)

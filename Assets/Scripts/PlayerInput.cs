@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour, IPlayerInput
 {
     public event Action<Vector2> Move;
-    public event Action SingleFire;
     public event Action StartFire;
     public event Action StopFire;
     public event Action<bool> ChangeWeapon;
@@ -36,7 +35,6 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            SingleFire?.Invoke();
             StartFire?.Invoke();
             _isFiring = true;
         }

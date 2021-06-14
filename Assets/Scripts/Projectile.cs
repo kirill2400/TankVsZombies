@@ -23,6 +23,10 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         Transform = GetComponent<Transform>();
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(AutoDestroy());
     }
 
@@ -31,6 +35,6 @@ public abstract class Projectile : MonoBehaviour
     protected virtual IEnumerator AutoDestroy()
     {
         yield return new WaitForSeconds(AliveTime);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

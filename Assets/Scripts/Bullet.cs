@@ -6,6 +6,6 @@ public class Bullet : Projectile
 {
     protected override void FixedUpdate()
     {
-        Transform.Translate(Transform.forward * (BulletSpeed * Time.fixedDeltaTime), Space.World);
+        Transform.Translate(Direction * (BulletSpeed * Time.fixedDeltaTime), Space.World);
     }
 }

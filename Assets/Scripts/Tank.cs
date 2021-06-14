@@ -8,6 +8,7 @@ public class Tank : MonoBehaviour
 {
     public Player Owner = null;
     public TankMover TankMover = null;
+    public WeaponContainer WeaponContainer = null;
     
     private IHealthSystem _healthSystem;
 
@@ -24,5 +25,12 @@ public class Tank : MonoBehaviour
     public void SetOwner(Player player)
     {
         Owner = player;
+        WeaponContainer.SetOwner(player);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<Enemy>())
+            Debug.Log("Enemy hit");
     }
 }
