@@ -2,30 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-public class ObjectPool : MonoBehaviour
+public static class ObjectPool<T> where T : MonoBehaviour
 {
-    public static ObjectPool Instance;
-    private Dictionary<Type, List<GameObject>> pooledObjects = new Dictionary<Type, List<GameObject>>();
+    private static List<GameObject> _pooledObjects = new List<GameObject>();
+    private static Transform _transform;
 
-    private void Awake()
+    public static GameObject GetPooledObject(GameObject prefab)
     {
-        Instance = this;
-    }
+        if (!_transform)
+            _transform = new GameObject(typeof(T).FullName).transform;
 
-    public T GetPooledObject<T>(T prefab) where T : MonoBehaviour
-    {
-        if (pooledObjects.TryGetValue(typeof(T), out var pooledList))
-            for (int i = 0; i < pooledList.Count; i++)
-                if (!pooledList[i].activeInHierarchy)
-                    return pooledList[i].GetComponent<T>();
+        for (int i = 0; i < _pooledObjects.Count; i++)
+            if (!_pooledObjects[i].activeInHierarchy)
+                return _pooledObjects[i];
 
-        T tmp = Instantiate(prefab, transform);
-        
-        if (!pooledObjects.ContainsKey(typeof(T)))
-            pooledObjects.Add(typeof(T), new List<GameObject>());
-        
-        pooledObjects[typeof(T)].Add(tmp.gameObject);
+        GameObject tmp = Object.Instantiate(prefab, _transform);
+
+        _pooledObjects.Add(tmp.gameObject);
         return tmp;
     }
 }
