@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TankSubmachineBullet
   m_EditorClassIdentifier: 
   AliveTime: 5
-  Damage: 10
+  Damage: 25
   ProjectileSpeed: 50

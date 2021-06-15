@@ -10,14 +10,14 @@ public class AiInput : PlayerInputBase
     public override event Action StopFire;
     public override event Action<bool> ChangeWeapon;
     
-    [SerializeField] private Transform target = null;
-    
+    private Transform _target = null;
     private Vector2 _moveInput;
     private Transform _transform;
 
     private void Awake()
     {
         _transform = transform;
+        _target = LocalPlayer.Transform;
     }
 
     public void Update()
@@ -27,7 +27,7 @@ public class AiInput : PlayerInputBase
     
     private void CheckMoveInput()
     {
-        Vector3 direction = target.position - _transform.position;
+        Vector3 direction = _target.position - _transform.position;
         _moveInput.x = AngleDir(_transform.forward, direction, _transform.up);
         _moveInput.y = 1f;
         

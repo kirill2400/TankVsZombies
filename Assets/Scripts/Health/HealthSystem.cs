@@ -12,7 +12,7 @@ public class HealthSystem : MonoBehaviour
     public bool IsDead => _health <= 0f;
 
     public event Action<float> PlayerHurt;
-    public event Action Died;
+    public event Action<HealthSystem> Died;
 
     [SerializeField] private PlayerCharacteristics characteristics = null;
     private float _maxHealth = 100f;
@@ -20,7 +20,7 @@ public class HealthSystem : MonoBehaviour
     private float _maxArmor = 1f;
     private float _armor = 1f;
 
-    private void Awake()
+    private void OnEnable()
     {
         _maxHealth = characteristics.maxHealth;
         _health = characteristics.health;
@@ -47,7 +47,7 @@ public class HealthSystem : MonoBehaviour
             damage = _health;
             _health = 0f;
             PlayerHurt?.Invoke(damage);
-            Died?.Invoke();
+            Died?.Invoke(this);
         }
     }
 }

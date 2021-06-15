@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045e759748a846cd90ca880859313e97, type: 3}
-  m_Name: ZombieBeater
+  m_Script: {fileID: 11500000, guid: c346f9c01e3f0764ea3afa5cd378b1e8, type: 3}
+  m_Name: EasyEnemy
   m_EditorClassIdentifier: 
-  Damage: 20
+  maxHealth: 50
+  health: 50
+  maxArmor: 1
+  armor: 0.3
+  movementSpeed: 9.5
+  rotateSpeed: 150

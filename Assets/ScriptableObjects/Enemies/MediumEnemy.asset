@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c346f9c01e3f0764ea3afa5cd378b1e8, type: 3}
-  m_Name: Player
+  m_Name: MediumEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
+  maxHealth: 125
+  health: 125
   maxArmor: 1
   armor: 0.5
-  movementSpeed: 10
-  rotateSpeed: 50
+  movementSpeed: 9
+  rotateSpeed: 100

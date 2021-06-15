@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c346f9c01e3f0764ea3afa5cd378b1e8, type: 3}
-  m_Name: Enemy
+  m_Name: HardEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 500
-  health: 500
+  maxHealth: 210
+  health: 210
   maxArmor: 1
-  armor: 0.25
-  movementSpeed: 9
-  rotateSpeed: 150
+  armor: 0.8
+  movementSpeed: 8.5
+  rotateSpeed: 50

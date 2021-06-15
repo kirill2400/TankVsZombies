@@ -8,7 +8,7 @@ public class ObjectMover : MonoBehaviour
     public float moveSpeed = 5f;
     public float rotateSpeed = 5f;
     
-    [SerializeField] private Transform tankTransform;
+    [SerializeField] private Transform thisTransform;
     [SerializeField] private PlayerInputBase playerInputBase;
     [SerializeField] private PlayerCharacteristics characteristics = null;
 
@@ -49,10 +49,10 @@ public class ObjectMover : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (!tankTransform)
+        if (!thisTransform)
             return;
         
-        tankTransform.Rotate(0f, _moveInput.x * rotateSpeed * Time.fixedDeltaTime, 0f, Space.World);
-        tankTransform.Translate(tankTransform.forward * (_moveInput.y * moveSpeed * Time.fixedDeltaTime), Space.World);
+        thisTransform.Rotate(0f, _moveInput.x * rotateSpeed * Time.fixedDeltaTime, 0f, Space.World);
+        thisTransform.Translate(thisTransform.forward * (_moveInput.y * moveSpeed * Time.fixedDeltaTime), Space.World);
     }
 }

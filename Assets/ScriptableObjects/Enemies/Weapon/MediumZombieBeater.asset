@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c346f9c01e3f0764ea3afa5cd378b1e8, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 045e759748a846cd90ca880859313e97, type: 3}
+  m_Name: MediumZombieBeater
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
-  maxArmor: 1
-  armor: 0.5
-  movementSpeed: 10
-  rotateSpeed: 50
+  Damage: 35

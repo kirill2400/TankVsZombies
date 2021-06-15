@@ -47,8 +47,5 @@ public class TankHeadRotator : MonoBehaviour
         }
         else
             gunTower.rotation = newRotation;
-
-
-        Debug.DrawLine(transform.position, _target.position, Color.red);
     }
 }

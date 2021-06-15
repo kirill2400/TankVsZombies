@@ -9,6 +9,9 @@ public class DamagePressure : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.gameObject.activeInHierarchy)
+            return;
+        
         var health = other.GetComponent<HealthSystem>();
         if (health)
             health.DoDamage(meleeWeapon.Damage);

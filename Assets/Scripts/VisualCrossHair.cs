@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class VisualCrossHair : MonoBehaviour
 {
-    [HideInInspector] public HealthSystem currentTarget;
-    
     [SerializeField] private float maxDistance = 25f;
     [SerializeField] private GameObject marker = null;
     [SerializeField] private Material redMaterial = null;
     [SerializeField] private Material greenMaterial = null;
+    [SerializeField] private LayerMask layerMask;
 
     private Transform _cameraTransform;
     private MeshRenderer _markerMesh;
@@ -44,18 +43,15 @@ public class VisualCrossHair : MonoBehaviour
     {
         if (Physics.Raycast(new Ray(_spawnProjectilePosition.position, _spawnProjectilePosition.forward), out var hit, maxDistance))
         {
-            currentTarget = hit.collider.GetComponent<HealthSystem>();
-            
             if (!marker)
                 return;
-            
+
+            var layer = hit.collider.gameObject.layer;
             marker.transform.position = hit.point;
-            _markerMesh.material = redMaterial;
+            _markerMesh.material = ((1 << layer) & layerMask) != 0 ? redMaterial : greenMaterial;
         }
         else
         {
-            currentTarget = null;
-            
             if (!marker)
                 return;
             

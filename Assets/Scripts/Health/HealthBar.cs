@@ -6,27 +6,26 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private HealthSystem healthSystem = null;
     [SerializeField] private Slider slider = null;
 
     private void OnEnable()
     {
-        if (!healthSystem)
+        if (!LocalPlayer.HealthSystem)
             return;
 
-        healthSystem.PlayerHurt += OnPlayerHurt;
+        LocalPlayer.HealthSystem.PlayerHurt += OnPlayerHurt;
     }
     
     private void OnDisable()
     {
-        if (!healthSystem)
+        if (!LocalPlayer.HealthSystem)
             return;
 
-        healthSystem.PlayerHurt -= OnPlayerHurt;
+        LocalPlayer.HealthSystem.PlayerHurt -= OnPlayerHurt;
     }
 
     private void OnPlayerHurt(float damage)
     {
-        slider.value = healthSystem.Health;
+        slider.value = LocalPlayer.HealthSystem.Health;
     }
 }
