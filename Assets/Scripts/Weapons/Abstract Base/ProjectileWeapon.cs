@@ -1,20 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ProjectileWeapon : Weapon
 {
     [SerializeField] private Transform spawnProjectilePosition;
-
-    protected virtual GameObject GetProjectileFromPool()
-    {
-        return ObjectPool<Projectile>.GetPooledObject(basicWeaponScriptableObject.projectilePrefab);
-    }
     
     protected override void Shoot()
     {
-        GameObject projectile = GetProjectileFromPool();
+        GameObject projectile = ObjectPoolContainer.GetPooledObject(basicWeaponScriptableObject.projectilePrefab);
 
         Transform projTransform = projectile.transform;
         projTransform.position = spawnProjectilePosition.position;

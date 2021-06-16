@@ -16,5 +16,5 @@ MonoBehaviour:
   health: 125
   maxArmor: 1
   armor: 0.5
-  movementSpeed: 9
+  movementSpeed: 10
   rotateSpeed: 100

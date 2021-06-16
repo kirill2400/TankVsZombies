@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum FireMode
@@ -13,5 +11,5 @@ public class BasicWeaponScriptableObject : ScriptableObject
 {
     public float FireRate;
     public FireMode fireMode;
-    public GameObject projectilePrefab;
+    public PoolableObject projectilePrefab;
 }

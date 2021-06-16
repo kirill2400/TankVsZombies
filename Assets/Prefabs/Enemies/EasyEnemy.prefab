@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.8}
+  m_AnchoredPosition: {x: 0, y: 1.3}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7167225092801878146
@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974676075489630117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 9174296742771122851}
@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 8582808142034293498}
   - component: {fileID: 722597071073047658}
   - component: {fileID: 4797713364702357581}
+  - component: {fileID: 2548634367590332709}
   m_Layer: 7
   m_Name: EasyEnemy
   m_TagString: Untagged
@@ -420,9 +421,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_Constraints: 84
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &8028916758999291580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -435,7 +436,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 0.25}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6885991465777617929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +492,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeWeapon: {fileID: 11400000, guid: d09c3b673df1c9046baccc0f4cf92657, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4797713364702357581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +509,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6308835163138519730}
   toRotate: {fileID: 4070570631252300567}
+--- !u!114 &2548634367590332709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224938867512087757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496aa465060448d43b587b98571c1527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: EasyEnemy
 --- !u!1 &8409516553855106762
 GameObject:
   m_ObjectHideFlags: 0

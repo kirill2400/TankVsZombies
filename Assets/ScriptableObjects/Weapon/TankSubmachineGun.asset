@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireRate: 0.1
   fireMode: 1
-  projectilePrefab: {fileID: 7557374672389018934, guid: 3233c74cfa4c72f45ba9bfa6b11c165f, type: 3}
+  projectilePrefab: {fileID: 7702753564667876120, guid: 3233c74cfa4c72f45ba9bfa6b11c165f, type: 3}

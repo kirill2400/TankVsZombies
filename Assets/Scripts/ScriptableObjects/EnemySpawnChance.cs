@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,5 +12,5 @@ public class EnemySpawnChance : ScriptableObject
 public class EnemyBlank
 {
     public float EnemyPercentageChance;
-    public GameObject EnemyPrefab;
+    public PoolableObject EnemyPrefab;
 }

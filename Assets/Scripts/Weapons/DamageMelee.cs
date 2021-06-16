@@ -1,15 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageMelee : MonoBehaviour
 {
-    [SerializeField] private MeleeWeapon meleeWeapon;
+    [SerializeField] private MeleeWeapon meleeWeapon = null;
+    [SerializeField] private LayerMask enemyLayer = default;
 
     private void OnCollisionEnter(Collision other)
     {
         if (!other.gameObject.activeInHierarchy)
+            return;
+
+        if (!enemyLayer.IsInLayer(other.gameObject.layer))
             return;
         
         var health = other.collider.GetComponent<HealthSystem>();

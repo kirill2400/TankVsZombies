@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 6901147434500437519}
   - component: {fileID: 9114913125845562989}
   - component: {fileID: 129954087782625781}
-  - component: {fileID: 5493098559482753896}
-  - component: {fileID: 5005193305650603378}
-  - component: {fileID: 7732207977897439947}
+  - component: {fileID: 7863348767358465970}
+  - component: {fileID: 3390218901312447820}
+  - component: {fileID: 7285323133025348839}
+  - component: {fileID: 7702753564667876120}
   m_Layer: 2
-  m_Name: TankCannonCharge
+  m_Name: TankSubmachineBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7557374672389018934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5493098559482753896
+--- !u!136 &7863348767358465970
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +100,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5005193305650603378
+--- !u!114 &3390218901312447820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,11 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7557374672389018934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f193365ef5dcc3144b7c6f46fd21395e, type: 3}
+  m_Script: {fileID: 11500000, guid: e4e416dc269480643a3c432d67efe570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileWeapon: {fileID: 11400000, guid: a8a45ead6538a8b45b68b45b82e6cf3b, type: 2}
---- !u!114 &7732207977897439947
+  _projectileWeapon: {fileID: 11400000, guid: a29aae185b0c3fe46b58133521c56660, type: 2}
+--- !u!114 &7285323133025348839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,3 +130,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967291
   skinWidth: 0.1
+--- !u!114 &7702753564667876120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557374672389018934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496aa465060448d43b587b98571c1527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: TankSubmachineBullet

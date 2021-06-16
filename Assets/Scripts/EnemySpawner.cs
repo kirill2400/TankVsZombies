@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemySpawnChance enemySpawnChance = null;
 
     private List<HealthSystem> _enemies = new List<HealthSystem>(MAXEnemies);
+    private int _zombieKilled;
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     {
         var randomPosition = GetNotVisibleTotem().position;
         
-        var enemy = ObjectPool<HealthSystem>.GetPooledObject(GetRandomEnemy());
+        var enemy = ObjectPoolContainer.GetPooledObject(GetRandomEnemy());
         enemy.transform.position = randomPosition;
         enemy.SetActive(true);
 
@@ -38,14 +37,14 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             int randomIndex = Random.Range(0, totems.Count);
-            if (!totems[randomIndex].GetComponent<Renderer>().isVisible)
+            if (!totems[randomIndex].GetComponentInChildren<Renderer>().isVisible)
                 return totems[randomIndex];
         }
     }
 
-    private GameObject GetRandomEnemy()
+    private PoolableObject GetRandomEnemy()
     {
-        var enemiesList = enemySpawnChance.Enemies.OrderBy(t => t.EnemyPercentageChance).ToList();
+        var enemiesList = enemySpawnChance.Enemies.OrderByDescending(t => t.EnemyPercentageChance).ToList();
         foreach (var enemy in enemiesList)
             if (Random.value <= enemy.EnemyPercentageChance * 0.01f)
                 return enemy.EnemyPrefab;
@@ -56,7 +55,11 @@ public class EnemySpawner : MonoBehaviour
     private void OnEnemyDied(HealthSystem sender)
     {
         sender.Died -= OnEnemyDied;
+
+        _enemies.Remove(sender);
         sender.gameObject.SetActive(false);
+        _zombieKilled++;
+        StaticEvent<ZombieKilledArgs>.InvokeEvent(sender, new ZombieKilledArgs(_zombieKilled));
         
         SpawnEnemy();
     }

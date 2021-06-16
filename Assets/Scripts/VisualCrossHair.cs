@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualCrossHair : MonoBehaviour
@@ -48,7 +45,7 @@ public class VisualCrossHair : MonoBehaviour
 
             var layer = hit.collider.gameObject.layer;
             marker.transform.position = hit.point;
-            _markerMesh.material = ((1 << layer) & layerMask) != 0 ? redMaterial : greenMaterial;
+            _markerMesh.material = layerMask.IsInLayer(layer) ? redMaterial : greenMaterial;
         }
         else
         {

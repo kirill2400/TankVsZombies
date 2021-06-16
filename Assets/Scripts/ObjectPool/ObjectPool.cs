@@ -1,19 +1,21 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public static class ObjectPool<T> where T : MonoBehaviour
+public class ObjectPool
 {
-    private static List<GameObject> _pooledObjects = new List<GameObject>();
-    private static Transform _transform;
+    public string Id { get; }
+    private List<GameObject> _pooledObjects = new List<GameObject>();
+    private Transform _transform;
 
-    public static GameObject GetPooledObject(GameObject prefab)
+    public ObjectPool(string id)
     {
-        if (!_transform)
-            _transform = new GameObject(typeof(T).FullName).transform;
+        Id = id;
+        _transform = new GameObject(id).transform;
+    }
 
+    public GameObject GetPooledObject(GameObject prefab)
+    {
         for (int i = 0; i < _pooledObjects.Count; i++)
             if (!_pooledObjects[i].activeInHierarchy)
                 return _pooledObjects[i];

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - EnemyPercentageChance: 80
-    EnemyPrefab: {fileID: 8224938867512087757, guid: aa39a42ecc079d244b1d011fb0a14054, type: 3}
+    EnemyPrefab: {fileID: 2548634367590332709, guid: aa39a42ecc079d244b1d011fb0a14054, type: 3}
   - EnemyPercentageChance: 50
-    EnemyPrefab: {fileID: 8224938867512087757, guid: 944bfb79b21fadd49a151ac8e09b9e70, type: 3}
+    EnemyPrefab: {fileID: 2626203319643039343, guid: 944bfb79b21fadd49a151ac8e09b9e70, type: 3}
   - EnemyPercentageChance: 20
-    EnemyPrefab: {fileID: 8224938867512087757, guid: 7d8661b24069a754faafb64b81db1747, type: 3}
+    EnemyPrefab: {fileID: 6893792928137786178, guid: 7d8661b24069a754faafb64b81db1747, type: 3}
