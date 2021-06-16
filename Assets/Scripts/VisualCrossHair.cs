@@ -45,7 +45,7 @@ public class VisualCrossHair : MonoBehaviour
 
             var layer = hit.collider.gameObject.layer;
             marker.transform.position = hit.point;
-            _markerMesh.material = layerMask.IsInLayer(layer) ? redMaterial : greenMaterial;
+            _markerMesh.material = layerMask.Contains(layer) ? redMaterial : greenMaterial;
         }
         else
         {

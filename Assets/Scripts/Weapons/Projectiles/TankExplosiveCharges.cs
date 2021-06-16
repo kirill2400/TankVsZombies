@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TankExplosiveCharges : Projectile
 {
+    [SerializeField] private LayerMask collideLayerMask;
     private TankExplosiveChargeScriptableObject _tankExplosiveCharge;
 
     protected override void Awake()
@@ -22,7 +23,7 @@ public class TankExplosiveCharges : Projectile
         base.DestroyProjectile();
         
         var colliders = Physics.OverlapSphere(Transform.position, _tankExplosiveCharge.ExplosiveRadius,
-            LayerMask.GetMask("Ally", "Enemies"), QueryTriggerInteraction.Ignore);
+            collideLayerMask, QueryTriggerInteraction.Ignore);
 
         foreach (var oneCollider in colliders)
         {

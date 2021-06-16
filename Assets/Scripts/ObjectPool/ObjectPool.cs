@@ -1,17 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class ObjectPool
+public class ObjectPool : MonoBehaviour
 {
-    public string Id { get; }
     private List<GameObject> _pooledObjects = new List<GameObject>();
     private Transform _transform;
 
-    public ObjectPool(string id)
+    private void Awake()
     {
-        Id = id;
-        _transform = new GameObject(id).transform;
+        _transform = transform;
     }
 
     public GameObject GetPooledObject(GameObject prefab)
@@ -20,7 +19,7 @@ public class ObjectPool
             if (!_pooledObjects[i].activeInHierarchy)
                 return _pooledObjects[i];
 
-        GameObject tmp = Object.Instantiate(prefab, _transform);
+        GameObject tmp = Instantiate(prefab, _transform);
 
         _pooledObjects.Add(tmp.gameObject);
         return tmp;

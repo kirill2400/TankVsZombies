@@ -113,6 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileWeapon: {fileID: 11400000, guid: a8a45ead6538a8b45b68b45b82e6cf3b, type: 2}
+  collideLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7732207977897439947
 MonoBehaviour:
   m_ObjectHideFlags: 0

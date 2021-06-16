@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private List<HealthSystem> _enemies = new List<HealthSystem>(MAXEnemies);
     private int _zombieKilled;
+    private bool _gameOver;
 
     private void Start()
     {
@@ -18,11 +20,21 @@ public class EnemySpawner : MonoBehaviour
             _enemies.Add(SpawnEnemy());
     }
 
+    private void OnEnable()
+    {
+        StaticEvent<GameOverArgs>.Subscribe(OnGameOver);
+    }
+
+    private void OnDisable()
+    {
+        StaticEvent<GameOverArgs>.UnSubscribe(OnGameOver);
+    }
+
     private HealthSystem SpawnEnemy()
     {
         var randomPosition = GetNotVisibleTotem().position;
         
-        var enemy = ObjectPoolContainer.GetPooledObject(GetRandomEnemy());
+        var enemy = ObjectPoolContainer.Instance.GetPooledObject(GetRandomEnemy());
         enemy.transform.position = randomPosition;
         enemy.SetActive(true);
 
@@ -60,7 +72,13 @@ public class EnemySpawner : MonoBehaviour
         sender.gameObject.SetActive(false);
         _zombieKilled++;
         StaticEvent<ZombieKilledArgs>.InvokeEvent(sender, new ZombieKilledArgs(_zombieKilled));
-        
-        SpawnEnemy();
+
+        if (!_gameOver)
+            SpawnEnemy();
+    }
+
+    private void OnGameOver(object sender, GameOverArgs args)
+    {
+        _gameOver = true;
     }
 }

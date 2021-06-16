@@ -19,11 +19,12 @@ public class GameplayStats : MonoBehaviour
     private void OnDisable()
     {
         StaticEvent<ZombieKilledArgs>.UnSubscribe(OnZombieKilled);
+        StaticEvent<GameOverArgs>.UnSubscribe(OnGameOver);
     }
 
     private void Update()
     {
-        timeSurvivedCounter.text = TimeSpan.FromSeconds(Time.time).ToString(@"mm\:ss", CultureInfo.CurrentCulture);
+        timeSurvivedCounter.text = TimeSpan.FromSeconds(Time.timeSinceLevelLoad).ToString(@"mm\:ss", CultureInfo.CurrentCulture);
     }
     
     private void OnZombieKilled(object sender, ZombieKilledArgs args)

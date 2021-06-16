@@ -10,7 +10,7 @@ public class DamageMelee : MonoBehaviour
         if (!other.gameObject.activeInHierarchy)
             return;
 
-        if (!enemyLayer.IsInLayer(other.gameObject.layer))
+        if (!enemyLayer.Contains(other.gameObject.layer))
             return;
         
         var health = other.collider.GetComponent<HealthSystem>();

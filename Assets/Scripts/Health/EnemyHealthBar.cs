@@ -20,6 +20,7 @@ public class EnemyHealthBar : MonoBehaviour
         slider.maxValue = _target.MaxHealth;
         slider.value = _target.Health;
         
-        toRotate.LookAt(_cameraTransform);
+        var cameraNormal = Vector3.Cross(_cameraTransform.up, _cameraTransform.right);
+        toRotate.rotation = Quaternion.LookRotation(cameraNormal);
     }
 }

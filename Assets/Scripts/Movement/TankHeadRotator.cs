@@ -5,15 +5,16 @@ public class TankHeadRotator : MonoBehaviour
     public float MoveTowerSpeed = 0.005f;
     public float MoveGunSpeed = 0.005f;
 
-    [SerializeField] protected float maxDistance = 25f;
-    [SerializeField] protected Transform gunTower;
-    [SerializeField] protected Transform gunPivot;
+    [SerializeField] private LayerMask detectLayerMask;
+    [SerializeField] private float maxDistance = 25f;
+    [SerializeField] private Transform gunTower;
+    [SerializeField] private Transform gunPivot;
 
     private Collider _target;
     
     private void Update()
     {
-        var colliders = Physics.OverlapSphere(transform.position, maxDistance, LayerMask.GetMask("Enemies"));
+        var colliders = Physics.OverlapSphere(transform.position, maxDistance, detectLayerMask);
         float distance = float.MaxValue;
         foreach (var coll in colliders)
         {

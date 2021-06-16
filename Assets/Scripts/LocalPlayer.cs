@@ -28,13 +28,18 @@ public class LocalPlayer : MonoBehaviour
     private void OnDisable()
     {
         StaticEvent<ZombieKilledArgs>.UnSubscribe(OnZombieKilled);
+        
+        if (!healthSystem)
+            return;
+
+        healthSystem.Died -= OnPlayerDied;
     }
 
     private void OnPlayerDied(HealthSystem sender)
     {
         healthSystem.Died -= OnPlayerDied;
         gameObject.SetActive(false);
-        StaticEvent<GameOverArgs>.InvokeEvent(this, new GameOverArgs(_zombieKilled, Time.time));
+        StaticEvent<GameOverArgs>.InvokeEvent(this, new GameOverArgs(_zombieKilled, Time.timeSinceLevelLoad));
     }
 
     private void OnZombieKilled(object sender, ZombieKilledArgs args)

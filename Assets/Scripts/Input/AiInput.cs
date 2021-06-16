@@ -11,6 +11,7 @@ public class AiInput : PlayerInputBase
     private Transform _target = null;
     private Vector2 _moveInput;
     private Transform _transform;
+    private float _elapsedTime;
 
     private void Awake()
     {
@@ -28,6 +29,14 @@ public class AiInput : PlayerInputBase
         Vector3 direction = _target.position - _transform.position;
         _moveInput.x = AngleDir(_transform.forward, direction, _transform.up);
         _moveInput.y = 1f;
+
+        if (_elapsedTime > 0f)
+        {
+            _moveInput *= -1;
+            _elapsedTime -= Time.deltaTime;
+        }
+        else if (Physics.Raycast(_transform.position, _transform.forward, 2f, LayerMask.GetMask("Default")))
+            _elapsedTime = .5f;
         
         Move?.Invoke(_moveInput);
     }

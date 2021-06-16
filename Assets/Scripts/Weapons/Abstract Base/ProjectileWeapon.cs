@@ -6,7 +6,7 @@ public abstract class ProjectileWeapon : Weapon
     
     protected override void Shoot()
     {
-        GameObject projectile = ObjectPoolContainer.GetPooledObject(basicWeaponScriptableObject.projectilePrefab);
+        GameObject projectile = ObjectPoolContainer.Instance.GetPooledObject(basicWeaponScriptableObject.projectilePrefab);
 
         Transform projTransform = projectile.transform;
         projTransform.position = spawnProjectilePosition.position;
