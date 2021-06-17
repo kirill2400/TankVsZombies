@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58087aef72a68944a45016cf51637c9, type: 3}
   m_Name: TankCannon
   m_EditorClassIdentifier: 
-  FireRate: 3
-  fireMode: 0
+  FireRate: 1
+  fireMode: 1
   projectilePrefab: {fileID: 1022971155470793258, guid: 3d98d3b7400b4bb4399925026286f236, type: 3}

@@ -34,17 +34,11 @@ public class TankHeadRotator : MonoBehaviour
         
         Vector3 dir = _target.bounds.center - gunTower.position;
         dir.y = 0f;
-        var newRotation =
-            Quaternion.RotateTowards(gunTower.rotation, Quaternion.LookRotation(dir), Time.fixedDeltaTime * MoveTowerSpeed);
+        gunTower.rotation = Quaternion.RotateTowards(gunTower.rotation, Quaternion.LookRotation(dir),
+            Time.fixedDeltaTime * MoveTowerSpeed);
         
-        if (Mathf.Abs(gunTower.rotation.eulerAngles.y - newRotation.eulerAngles.y) < .1f)
-        {
-            dir = _target.bounds.center - gunPivot.position;
-            gunPivot.rotation = Quaternion.RotateTowards(gunPivot.rotation, Quaternion.LookRotation(dir),
-                Time.fixedDeltaTime * MoveGunSpeed);
-            gunTower.rotation = newRotation;
-        }
-        else
-            gunTower.rotation = newRotation;
+        dir = _target.bounds.center - gunPivot.position;
+        gunPivot.rotation = Quaternion.RotateTowards(gunPivot.rotation, Quaternion.LookRotation(dir),
+            Time.fixedDeltaTime * MoveGunSpeed);
     }
 }
