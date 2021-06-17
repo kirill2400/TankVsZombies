@@ -38,7 +38,13 @@ public class TankHeadRotator : MonoBehaviour
             Time.fixedDeltaTime * MoveTowerSpeed);
         
         dir = _target.bounds.center - gunPivot.position;
-        gunPivot.rotation = Quaternion.RotateTowards(gunPivot.rotation, Quaternion.LookRotation(dir),
+        var lookRotation = Quaternion.LookRotation(dir);
+        var lookRotationEuler = lookRotation.eulerAngles;
+        lookRotationEuler.y = 0f;
+        lookRotationEuler.z = 0f;
+        lookRotation.eulerAngles = lookRotationEuler;
+        
+        gunPivot.localRotation = Quaternion.RotateTowards(gunPivot.localRotation, lookRotation,
             Time.fixedDeltaTime * MoveGunSpeed);
     }
 }
