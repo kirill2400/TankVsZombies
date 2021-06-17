@@ -36,6 +36,7 @@ public class WeaponContainer : MonoBehaviour
 
     public void StartFire()
     {
+        StopFire();
         if (_currentWeapon)
             _currentWeapon.StartFire();
     }
@@ -48,9 +49,13 @@ public class WeaponContainer : MonoBehaviour
 
     public void ChangeWeapon(bool nextWeapon)
     {
+        bool isFiring = false;
         if (_currentWeapon)
+        {
+            isFiring = _currentWeapon.IsFiring;
             _currentWeapon.StopFire();
-        
+        }
+
         var index = weaponsList.IndexOf(_currentWeapon);
         if (index < 0)
             return;
@@ -61,6 +66,9 @@ public class WeaponContainer : MonoBehaviour
             index = weaponsList.Count - 1;
         
         _currentWeapon = weaponsList[index];
+        
+        if (isFiring && _currentWeapon)
+            _currentWeapon.StartFire();
         
         if (visualCrossHair)
             visualCrossHair.SetCurrentWeapon(_currentWeapon.GetFirePoint());

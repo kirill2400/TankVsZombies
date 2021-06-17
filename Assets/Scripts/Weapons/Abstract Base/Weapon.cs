@@ -3,6 +3,8 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public bool IsFiring => _fireRoutine != null;
+    
     [SerializeField] protected BasicWeaponScriptableObject basicWeaponScriptableObject;
 
     private Coroutine _fireRoutine;
@@ -16,7 +18,10 @@ public abstract class Weapon : MonoBehaviour
     public void StopFire()
     {
         if (_fireRoutine != null)
+        {
             StopCoroutine(_fireRoutine);
+            _fireRoutine = null;
+        }
     }
 
     private IEnumerator StartShooting()
